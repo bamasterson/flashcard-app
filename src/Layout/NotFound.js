@@ -1,5 +1,6 @@
 import React from "react";
 
+//standard 'not found' function for dealing with bad url paths
 function NotFound() {
   return (
     <div className="NotFound">

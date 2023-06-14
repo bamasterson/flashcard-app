@@ -1,5 +1,6 @@
 import React from "react";
 
+//header for website
 function Header() {
   return (
     <header className="jumbotron bg-dark">
