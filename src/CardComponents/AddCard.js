@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import CardForm from "./CardForm";
 import { readDeck, createCard } from "../utils/api/index";
 
@@ -34,7 +34,7 @@ function AddCard() {
     async function handleSubmit(card) {
         try {
           await createCard(deckId, card);
-          history.push(`/decks/${deck.id}`);
+          history.push(`/decks/${deck.id}/cards/new`);
         } catch (err) {
           if (err.name === "AbortError") {
             console.info("aborted");
@@ -52,14 +52,22 @@ function AddCard() {
     
     return (
         <div>
-            <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                    <li className="breadcrumb-item active" aria-current="page">
-                    <span className="oi oi-plus"></span> Add Card
-                    </li>
+            <nav aria-label='breadcrumb'>
+                <ol className='breadcrumb'>
+                <li className='breadcrumb-item'>
+                    <Link to='/'>
+                    <i className='bi bi-house-door-fill'></i> Home
+                    </Link>
+                </li>
+                <li className='breadcrumb-item'>
+                    <Link to={`/decks/${deckId}`}>{deck.name}</Link>
+                </li>
+                <li className='breadcrumb-item active' aria-current='page'>
+                    Add Card
+                </li>
                 </ol>
             </nav>
-            <h1>{`${deck.name}`}</h1>
+            <h1>{`${deck.name}: Add Cards`}</h1>
             <CardForm
                 handleSubmit={handleSubmit}
                 handleCancel={handleCancel}

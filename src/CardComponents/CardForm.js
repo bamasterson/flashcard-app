@@ -13,7 +13,7 @@ function CardForm({ handleSubmit, handleCancel, card }) {
     const submit = (event) => {
         event.preventDefault();
         handleSubmit(cardInfo);
-        setCardInfo({});
+        setCardInfo({front:"", back:""});
     };
 
     if (!cardInfo) {
@@ -44,8 +44,8 @@ function CardForm({ handleSubmit, handleCancel, card }) {
                         onChange={updateForm}
                         required
                     ></textarea>
-                    <button className="btn btn-secondary my-2" onClick={handleCancel}>Cancel</button>
-                    <button type="submit" className="btn btn-primary my-2">Submit</button>
+                    <button className="btn btn-secondary my-2" onClick={handleCancel}>Done</button>
+                    <button type="submit" className="btn btn-primary my-2">Save</button>
                 </div>
             </form>
         );
@@ -78,10 +78,10 @@ function CardForm({ handleSubmit, handleCancel, card }) {
                   required
                 ></textarea>
                 <button className='btn btn-secondary my-2' onClick={handleCancel}>
-                  Cancel
+                  Done
                 </button>
                 <button type='submit' className='btn btn-primary my-2'>
-                  Submit
+                  Save
                 </button>
               </div>
             </form>
